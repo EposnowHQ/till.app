@@ -1,0 +1,28 @@
+<head>
+    
+    <script src="https://www.eposnowhq.com/cdn/dist/sdk/eposnow.till.sdk.js"></script>
+    <script>
+        var eposSDK = window.EposNowTillSDK;
+        
+        // Register the event listener to publish transaction data between the app and the till
+        eposSDK.TransactionPublisher.register(window);
+
+        window.create_transaction = function () {
+            /* Create Transaction Data */
+            var transaction_data = new eposSDK.Transaction();
+            transaction_data.Products.push(new eposSDK.Product(34487274, 1, 0.60));
+            transaction_data.MiscItems.push(new eposSDK.MiscItem("Misc product text", 1.99));
+            
+            transaction_data.TransactionDetails.push(new eposSDK.TransactionDetail("detail", "PB_12345"));
+
+            console.log(JSON.stringify(transaction_data));
+
+            /* Publish the transaction data to the till  */
+            eposSDK.TransactionPublisher.publish(transaction_data);
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="create_transaction()">Create Transaction</button>
+</body>
