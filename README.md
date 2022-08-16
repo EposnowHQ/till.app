@@ -42,7 +42,7 @@ class Transaction {
     MiscItems: Array<MiscItem>;
     Products: Array<Product>;
     Tenders: Array<Tender>;
-    TransactionDetails: Array<string>;
+    TransactionDetails: Array<TransactionDetail>;
     Discount?: Discount;
     constructor(customerId?: number);
 }

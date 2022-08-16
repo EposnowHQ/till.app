@@ -20,9 +20,21 @@
             /* Publish the transaction data to the till  */
             eposSDK.TransactionPublisher.publish(transaction_data);
         }
+
+        window.submit = function () {
+            var eposSDK = window.EposNowTillSDK;
+            eposSDK.submitForm(window);
+        }
+
+        window.cancel = function () {
+            var eposSDK = window.EposNowTillSDK;
+            eposSDK.cancelForm(window);
+        }
     </script>
 </head>
 
 <body>
     <button onclick="create_transaction()">Create Transaction</button>
+    <button onclick="submit()">Submit Parent Button</button>
+    <button onclick="cancel()">Cancel Parent Button</button>
 </body>
